@@ -28,13 +28,14 @@ vlk_init :: proc(vlk: ^Valkyrie) {
 }
 
 vlk_run :: proc(vlk: ^Valkyrie) {
-    evt: ^x.XEvent
+    evt: x.XEvent
+    log.info("Listening for events...")
     for {
-        x.XNextEvent(vlk.display, evt)
+        x.XNextEvent(vlk.display, &evt)
 
         #partial switch evt.type {
         case .MapRequest:
-            vlk_create_window(vlk, evt)
+            vlk_create_window(vlk, &evt)
 
         case:
             log.debugf("Unknown event type: %q", evt.type)
