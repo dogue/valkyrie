@@ -19,12 +19,8 @@ vlk_create :: proc(display_name: string, allocator := context.allocator) -> (vlk
         os.exit(1)
     }
 
-    log.infof("Successfully opened a connection to display %q", display_name)
-    return
-}
-
-vlk_init :: proc(vlk: ^Valkyrie) {
     x.XSelectInput(vlk.display, x.XDefaultRootWindow(vlk.display), {.SubstructureRedirect})
+    return
 }
 
 vlk_run :: proc(vlk: ^Valkyrie) {

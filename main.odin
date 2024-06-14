@@ -10,6 +10,5 @@ main :: proc() {
     defer log.destroy_console_logger(logger)
 
     vlk := vlk_create(":69")
-    vlk_init(vlk)
     vlk_run(vlk)
 }
